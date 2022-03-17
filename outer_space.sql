@@ -13,36 +13,38 @@ CREATE TABLE planets
   name TEXT NOT NULL,
   orbital_period_in_years FLOAT NOT NULL,
   orbits_around TEXT NOT NULL,
-  galaxy TEXT NOT NULL,
-  moons INT NOT NULL,
-  FOREIGN KEY (moons) REFERENCES Moons (id) ON DELETE CASCADE
+  galaxy TEXT NOT NULL
 );
 
 CREATE TABLE Moons (
   id SERIAL PRIMARY KEY,
-  name TEXT
+  name TEXT,
+  planet_id INT,
+  FOREIGN KEY (planet_id) REFERENCES planet (id) ON DELETE CASCADE
 );
 
-  INSERT INTO Moons (name) VALUES ('The Moon');
-  INSERT INTO Moons (name) VALUES ('Phobis');
-  INSERT INTO Moons (name) VALUES ('Demios');
-  INSERT INTO Moons (name) VALUES ('Naiad');
-  INSERT INTO Moons (name) VALUES ('Thalassa');
-  INSERT INTO Moons (name) VALUES ('Despina');
-  INSERT INTO Moons (name) VALUES ('Galatea');
-  INSERT INTO Moons (name) VALUES ('Larissa');
-  INSERT INTO Moons (name) VALUES ('S/2004 N 1');
-  INSERT INTO Moons (name) VALUES ('Proteus');
-  INSERT INTO Moons (name) VALUES ('Triton');
-  INSERT INTO Moons (name) VALUES ('Nereid');
-  INSERT INTO Moons (name) VALUES ('Halimede');
-  INSERT INTO Moons (name) VALUES ('Sao');
-  INSERT INTO Moons (name) VALUES ('Laomedeia');
-  INSERT INTO Moons (name) VALUES ('Psamathe');
-  INSERT INTO Moons (name) VALUES ('Neso');
+  INSERT INTO Moons (name, planet_id) VALUES ('The Moon', 1);
+  INSERT INTO Moons (name, planet_id) VALUES ('Demios', 2);
+  INSERT INTO Moons (name, planet_id) VALUES ('Phobis', 2);
+  INSERT INTO Moons (name, planet_id) VALUES ('Naiad', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Thalassa', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Despina', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Galatea', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Larissa', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('S/2004 N 1', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Proteus', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Triton', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Nereid', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Halimede', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Sao', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Laomedeia', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Psamathe', 3);
+  INSERT INTO Moons (name, planet_id) VALUES ('Neso', 3);
+
+
 
 INSERT INTO planets
-  (name, orbital_period_in_years, orbits_around, galaxy, moons)
+  (name, orbital_period_in_years, orbits_around, galaxy)
 VALUES
   ('Earth', 1.00, 'The Sun', 'Milky Way', "The Moon"),
   ('Mars', 1.88, 'The Sun', 'Milky Way', '{"Phobos", "Deimos"}'),
